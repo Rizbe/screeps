@@ -21,21 +21,21 @@ module.exports.loop = function () {
     var builder = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     console.log('Builder: ' + builder.length);
 
-    if(harvesters.length < 4) {
+    if(harvesters.length < 14) {
         var newName = 'Harvester' + Game.time;
         console.log('Spawning new harvester: ' + newName);
         Game.spawns['Brooklyn'].spawnCreep([WORK,CARRY,MOVE], newName,
             {memory: {role: 'harvester'}});
     }
 
-    if(upgrader.length < 2) {
+    if(upgrader.length < 8) {
         var newName = 'Upgrader' + Game.time;
         console.log('Spwning new upgrader: ' + newName);
         Game.spawns['Brooklyn'].spawnCreep([WORK,CARRY,MOVE], newName,
             {memory: {role: 'upgrader'}});
     }
 
-    if(builder.length < 4) {
+    if(builder.length < 8) {
         var newName = 'Builder' + Game.time;
         console.log('Spwning new builder: ' + newName);
         Game.spawns['Brooklyn'].spawnCreep([WORK,CARRY,MOVE], newName,
