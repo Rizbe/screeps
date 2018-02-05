@@ -11,15 +11,19 @@ var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-      var currentEnergy = Game.rooms['W2N5'].energyAvailable
-      var totalEnergy = Game.rooms['W2N5'].energyCapacityAvailable
+      var currentEnergy = Game.rooms['W3N7'].energyAvailable
+      var totalEnergy = Game.rooms['W3N7'].energyCapacityAvailable
+
+
         if(creep.carry.energy < creep.carryCapacity) {
             var sources = creep.room.find(FIND_SOURCES);
             if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+
             }
         }
         else {
+          creep.say('💰 Energy')
             var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&

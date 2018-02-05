@@ -12,6 +12,13 @@ module.exports.loop = function () {
         }
     }
 
+
+    var enn = Game.rooms['W3N7'].find(FIND_SOURCES_ACTIVE);
+    console.log("Length of active source:"+enn.length)
+    console.log(enn[0])
+
+
+
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     console.log('Harvesters: ' + harvesters.length);
 
@@ -21,7 +28,7 @@ module.exports.loop = function () {
     var builder = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     console.log('Builder: ' + builder.length);
 
-    if(harvesters.length < 14) {
+    if(harvesters.length < 20) {
         var newName = 'Harvester' + Game.time;
         console.log('Spawning new harvester: ' + newName);
         Game.spawns['Brooklyn'].spawnCreep([WORK,CARRY,MOVE], newName,
@@ -41,6 +48,8 @@ module.exports.loop = function () {
         Game.spawns['Brooklyn'].spawnCreep([WORK,CARRY,MOVE], newName,
             {memory: {role: 'builder'}});
     }
+
+    console.log("Harvesters:"+harvesters.length+" | Upgrader:"+upgrader.length+" | Builder:"+builder.length)
 
     if(Game.spawns['Brooklyn'].spawning) {
         var spawningCreep = Game.creeps[Game.spawns['Brooklyn'].spawning.name];
